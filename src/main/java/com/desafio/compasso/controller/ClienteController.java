@@ -32,5 +32,6 @@ public class ClienteController {
         return new ClienteService().deletar(id);
     }
 
+    // todo add reques post criar cliente
     //todo add request patch para editar o nome do cliente
 }

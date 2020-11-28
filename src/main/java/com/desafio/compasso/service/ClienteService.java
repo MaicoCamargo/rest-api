@@ -15,7 +15,7 @@ public class ClienteService {
     }
 
     public Cliente getByNome(String nome) {
-        return new Cliente("AngryM4n","Masculino", new Date("01/01/2020"),23, new Cidade());
+        return new Cliente(1, "AngryM4n","Masculino", new Date("01/01/2020"),23, new Cidade());
     }
 
     public String deletar(int id) {
