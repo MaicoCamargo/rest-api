@@ -1,19 +1,28 @@
 package com.desafio.compasso.model;
 
+import org.springframework.context.annotation.Primary;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table
 public class Cliente {
 
+    @Id @GeneratedValue
+    private int id;
     private String nome;
     private String sexo;
     private Date dataNascimento;
     private int idade;
+    @ManyToOne
     private Cidade cidade;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String sexo, Date dataNascimento, int idade, Cidade cidade) {
+    public Cliente(int id, String nome, String sexo, Date dataNascimento, int idade, Cidade cidade) {
+        this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.dataNascimento = dataNascimento;
@@ -59,5 +68,13 @@ public class Cliente {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

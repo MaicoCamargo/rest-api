@@ -1,16 +1,33 @@
 package com.desafio.compasso.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity @Table
 public class Cidade {
 
+    @Id @GeneratedValue
+    private int id;
     private String nome;
     private String estado;
 
     public Cidade() {
     }
 
-    public Cidade(String nome, String estado) {
+    public Cidade(int id, String nome, String estado) {
+        this.id = id;
         this.nome = nome;
         this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
