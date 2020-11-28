@@ -1,7 +1,9 @@
 package com.desafio.compasso.controller;
 
+import com.desafio.compasso.exception.RecursoNaoEncontrado;
 import com.desafio.compasso.model.Cliente;
 import com.desafio.compasso.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +13,13 @@ import java.util.List;
 @ResponseBody
 public class ClienteController {
 
+    @Autowired
+    private ClienteService service;
+
 
     @GetMapping("{id}")
-    private Cliente getClienteById(@PathVariable int id){
-        return new ClienteService().getById(id);
+    private Cliente getClienteById(@PathVariable int id) throws RecursoNaoEncontrado {
+        return service.findById(id);
     }
 
     @GetMapping(params = "nome")

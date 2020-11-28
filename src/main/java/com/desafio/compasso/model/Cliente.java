@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
 public class Cliente {
 
+    //todo tornar o id auto increment
     @Id @GeneratedValue
     private int id;
     private String nome;
@@ -76,5 +76,17 @@ public class Cliente {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", idade=" + idade +
+                ", cidade=" + cidade +
+                '}';
     }
 }

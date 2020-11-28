@@ -1,13 +1,11 @@
 package com.desafio.compasso.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity @Table
+@Entity
 public class Cidade {
 
+    //todo tornar o id auto increment
     @Id @GeneratedValue
     private int id;
     private String nome;
@@ -40,5 +38,14 @@ public class Cidade {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Cidade{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }
