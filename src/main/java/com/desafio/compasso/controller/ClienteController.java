@@ -23,18 +23,19 @@ public class ClienteController {
     }
 
     @GetMapping(params = "nome")
-    private Cliente getClienteByNome(@RequestParam("nome") String nome){
-        return new ClienteService().getByNome(nome);
+    private Cliente getClienteByNome(@RequestParam("nome") String nome) throws RecursoNaoEncontrado {
+        return service.getByNome(nome);
     }
 
     @GetMapping( params = "estado")
     private List<Cliente> getClienteByEstado(@RequestParam("estado") String estado){
-        return new ClienteService().getByEstado(estado);
+        return service.getByEstado(estado);
     }
 
     @DeleteMapping("{id}")
-    private String deletarCliente(@PathVariable int id ){
-        return new ClienteService().deletar(id);
+    private String deletarCliente(@PathVariable int id) throws RecursoNaoEncontrado {
+        Cliente cliente = service.findById(id);
+        return service.deletar(cliente);
     }
 
     // todo add reques post criar cliente

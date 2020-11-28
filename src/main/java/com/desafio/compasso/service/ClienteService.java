@@ -2,14 +2,10 @@ package com.desafio.compasso.service;
 
 import com.desafio.compasso.ClienteRepository;
 import com.desafio.compasso.exception.RecursoNaoEncontrado;
-import com.desafio.compasso.model.Cidade;
 import com.desafio.compasso.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.RelationNotFoundException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,16 +26,21 @@ public class ClienteService {
 
     }
 
-    public Cliente getByNome(String nome) {
-        return new Cliente(1, "AngryM4n","Masculino", new Date("01/01/2020"),23, new Cidade());
+    public Cliente getByNome(String nome) throws RecursoNaoEncontrado {
+        Cliente cliente = repository.findByNome(nome);
+         return cliente;
+
+
     }
 
-    public String deletar(int id) {
-        return "deletado";
+    public String deletar(Cliente cliente) {
+
+         repository.delete(cliente);
+         return "Cliente Deletado";
     }
 
     public List<Cliente> getByEstado(String estado) {
-     return new ArrayList<>();
+     return repository.findByCidade_Estado(estado);
     }
 
     // todo criar metodo para editar nome do usuário
