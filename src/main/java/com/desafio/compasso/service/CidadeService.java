@@ -32,4 +32,13 @@ public class CidadeService {
     public List<Cidade> findByNome(String nome) {
         return repository.findByNome(nome);
     }
+
+    /**
+     * criar uma nova cidade
+     * @param cidade - nova cidade para ser salva
+     * @return - cidade salva no banco
+     */
+    public Cidade criar(Cidade cidade) {
+        return repository.save(cidade);
+    }
 }
