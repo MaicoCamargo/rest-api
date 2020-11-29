@@ -15,6 +15,12 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
+    /**
+     * buscar cliente pelo id
+     * @param id - id do cliente
+     * @return cliente
+     * @throws RecursoNaoEncontrado - string com mensagem caso cliente não seja incontrado
+     */
     public Cliente findById(int id) throws RecursoNaoEncontrado {
         Optional<Cliente> cliente = repository.findById(id);
 
@@ -26,19 +32,34 @@ public class ClienteService {
 
     }
 
+    /**
+     * buscando cliente pelo nome
+     * @param nome - nome do cliente para busca
+     * @return - cliente com donem
+     * @throws RecursoNaoEncontrado - caso n exista cliente com nome informado
+     */
     public Cliente getByNome(String nome) throws RecursoNaoEncontrado {
-        Cliente cliente = repository.findByNome(nome);
-         return cliente;
+        return repository.findByNome(nome);
 
 
     }
 
+    /**
+     * excluir um cliente
+     * @param cliente - objeto cliente
+     * @return - string com mensagem de deletado
+     */
     public String deletar(Cliente cliente) {
-
+            //todo trazer a buscar do cliente para service
          repository.delete(cliente);
          return "Cliente Deletado";
     }
 
+    /**
+     * buscando cliente pelo estado
+     * @param estado - estado
+     * @return - lista de cliente de determinado estado
+     */
     public List<Cliente> getByEstado(String estado) {
      return repository.findByCidade_Estado(estado);
     }
