@@ -66,6 +66,15 @@ public class ClienteController {
         return service.cadastrar(cliente);
     }
 
-    // todo add reques post criar cliente
-    //todo add request patch para editar o nome do cliente
+    /**
+     * editar o nome de um cliente
+     * @param id - id do cliente para editar
+     * @param cliente - novo nome do cleinte
+     * @return -  mensagem com sucesso ou erro na edição
+     */
+    @PatchMapping("/{id}")
+    public Cliente editar(@PathVariable int id,@RequestBody Cliente cliente) throws RecursoNaoEncontrado {
+        cliente.setId(id);
+        return service.update(cliente);
+    }
 }

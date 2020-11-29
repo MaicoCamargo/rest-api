@@ -6,6 +6,7 @@ import com.desafio.compasso.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,12 +84,26 @@ public class ClienteService {
     }
 
     /**
-     * editar o nome de um cliente
+     *
      * @param cliente - cliente com novo nome
      * @return - mensagem de sucesso ou erro no update
+     * th
      */
-    public String update(Cliente cliente) {
-        return  "em construção";
+    /**
+     * editar o nome de um cliente
+     * @param cliente - cliente com novo nome
+     * @return  - mensagem de sucesso ou erro no update
+     * @throws RecursoNaoEncontrado - mensagem informando caso o cliente não seja encontrado
+     */
+    public Cliente update(@NotNull Cliente cliente) throws RecursoNaoEncontrado {
+        Optional<Cliente> encontrado =  repository.findById(cliente.getId());
+
+        if (encontrado.isPresent()){
+            return repository.save(cliente);
+        } else {
+            throw new RecursoNaoEncontrado("Ocorreu um erro no update do nome");
+        }
+
     }
 
 }
