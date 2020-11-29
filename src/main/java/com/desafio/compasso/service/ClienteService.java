@@ -17,6 +17,7 @@ public class ClienteService {
 
     /**
      * buscar cliente pelo id
+     *
      * @param id - id do cliente
      * @return cliente
      * @throws RecursoNaoEncontrado - string com mensagem caso cliente não seja incontrado
@@ -24,7 +25,7 @@ public class ClienteService {
     public Cliente findById(int id) throws RecursoNaoEncontrado {
         Optional<Cliente> cliente = repository.findById(id);
 
-        if(cliente.isPresent()) {
+        if (cliente.isPresent()) {
             return cliente.get();
         } else {
             throw new RecursoNaoEncontrado("Cliente não encontado");
@@ -34,35 +35,48 @@ public class ClienteService {
 
     /**
      * buscando cliente pelo nome
+     *
      * @param nome - nome do cliente para busca
      * @return - cliente com donem
-     * @throws RecursoNaoEncontrado - caso n exista cliente com nome informado
      */
-    public Cliente getByNome(String nome) throws RecursoNaoEncontrado {
+    public Cliente getByNome(String nome) {
         return repository.findByNome(nome);
 
 
     }
 
+
     /**
      * excluir um cliente
-     * @param cliente - objeto cliente
-     * @return - string com mensagem de deletado
+     *  -  primeiro busca o cliente pelo id
+     *  - caso encontrar deleta do banco
+     * @param id - id do cliente para excluir
+     * @return - mensagem informando que o cliente foi deletado
+     * @throws RecursoNaoEncontrado - mensagem informando que ocorreu um erro no deletar
      */
-    public String deletar(Cliente cliente) {
-            //todo trazer a buscar do cliente para service
-         repository.delete(cliente);
-         return "Cliente Deletado";
+    public String deletar(int id) throws RecursoNaoEncontrado {
+
+        Optional<Cliente> cliente= repository.findById(id);
+        if (cliente.isPresent()){
+
+            repository.deleteById(id);
+            return "Cliente Deletado, buddy";
+        } else {
+            throw new RecursoNaoEncontrado("Ocorreu um erro no deletar o cliente");
+        }
     }
 
     /**
      * buscando cliente pelo estado
+     *
      * @param estado - estado
      * @return - lista de cliente de determinado estado
      */
     public List<Cliente> getByEstado(String estado) {
-     return repository.findByCidade_Estado(estado);
+        return repository.findByCidade_Estado(estado);
     }
 
-    // todo criar metodo para editar nome do usuário
+    public String update() {
+        return  "em construção";
+    }
 }
