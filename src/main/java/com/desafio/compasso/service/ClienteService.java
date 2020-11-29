@@ -96,14 +96,14 @@ public class ClienteService {
      * @throws RecursoNaoEncontrado - mensagem informando caso o cliente não seja encontrado
      */
     public Cliente update(@NotNull Cliente cliente) throws RecursoNaoEncontrado {
-        Optional<Cliente> encontrado =  repository.findById(cliente.getId());
-
+        Optional<Cliente> encontrado = repository.findById(cliente.getId());
         if (encontrado.isPresent()){
-            return repository.save(cliente);
-        } else {
-            throw new RecursoNaoEncontrado("Ocorreu um erro no update do nome");
+            return encontrado.map(record -> {
+                record.setNome(cliente.getNome());
+                return repository.save(record);
+            }).get();
         }
-
+        throw new RecursoNaoEncontrado("Ocorreu um erro no editar o cliente");
     }
 
 }
