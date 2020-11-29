@@ -3,10 +3,8 @@ package com.desafio.compasso.controller;
 import com.desafio.compasso.model.Cidade;
 import com.desafio.compasso.service.CidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -35,4 +33,15 @@ public class CidadeController {
     private List<Cidade> getByNome(@RequestParam String nome) {
         return service.findByNome(nome);
     }
+
+    /**
+     * criar um nova cidade
+     * @param cidade - nova cidade para criar
+     * @return - cidade criada
+     */
+    @PostMapping
+    private Cidade cadastrar(@RequestBody Cidade cidade){
+        return service.criar(cidade);
+    }
+
 }
