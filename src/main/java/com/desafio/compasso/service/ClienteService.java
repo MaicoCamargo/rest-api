@@ -41,10 +41,7 @@ public class ClienteService {
      */
     public Cliente getByNome(String nome) {
         return repository.findByNome(nome);
-
-
     }
-
 
     /**
      * excluir um cliente
@@ -76,7 +73,22 @@ public class ClienteService {
         return repository.findByCidade_Estado(estado);
     }
 
-    public String update() {
+    /**
+     * criar novo cliente
+     * @param cliente - dados do novo cliente
+     * @return - mensagem de sucesso ou erro no cadastro
+     */
+    public Cliente cadastrar(Cliente cliente) throws RecursoNaoEncontrado {
+        return repository.save(cliente);
+    }
+
+    /**
+     * editar o nome de um cliente
+     * @param cliente - cliente com novo nome
+     * @return - mensagem de sucesso ou erro no update
+     */
+    public String update(Cliente cliente) {
         return  "em construção";
     }
+
 }

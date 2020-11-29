@@ -3,6 +3,7 @@ package com.desafio.compasso.model;
 import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,7 @@ public class Cliente {
     private int id;
     private String nome;
     private String sexo;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private int idade;
     @ManyToOne
     private Cidade cidade;
@@ -21,7 +22,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id, String nome, String sexo, Date dataNascimento, int idade, Cidade cidade) {
+    public Cliente(int id, String nome, String sexo, LocalDate dataNascimento, int idade, Cidade cidade) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
@@ -46,11 +47,11 @@ public class Cliente {
         this.sexo = sexo;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

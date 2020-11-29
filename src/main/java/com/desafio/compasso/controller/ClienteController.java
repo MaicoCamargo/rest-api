@@ -10,12 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cliente")
-@ResponseBody
 public class ClienteController {
 
     @Autowired
     private ClienteService service;
-
 
     /**
      * buscar um cliente pelo id
@@ -56,6 +54,16 @@ public class ClienteController {
     @DeleteMapping("{id}")
     private String deletarCliente(@PathVariable int id) throws RecursoNaoEncontrado {
         return service.deletar(id);
+    }
+
+    /**
+     * criar um novo cliente
+     * @param cliente - novo cliente para criar
+     * @return - mensagem com sucesso ou erro na criação
+     */
+    @PostMapping
+    public Cliente cadastrar(@RequestBody Cliente cliente) throws RecursoNaoEncontrado {
+        return service.cadastrar(cliente);
     }
 
     // todo add reques post criar cliente
