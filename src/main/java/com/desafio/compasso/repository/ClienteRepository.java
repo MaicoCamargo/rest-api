@@ -1,4 +1,4 @@
-package com.desafio.compasso;
+package com.desafio.compasso.repository;
 
 import com.desafio.compasso.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,8 +1,8 @@
 package com.desafio.compasso.service;
 
-import com.desafio.compasso.ClienteRepository;
 import com.desafio.compasso.exception.RecursoNaoEncontrado;
 import com.desafio.compasso.model.Cliente;
+import com.desafio.compasso.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
