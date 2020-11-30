@@ -32,7 +32,7 @@ public class ClienteController {
      * @return - um unico cliente com o nome
      */
     @GetMapping(params = "nome")
-    private Cliente getClienteByNome(@RequestParam("nome") String nome) throws RecursoNaoEncontrado {
+    private List<Cliente> getClienteByNome(@RequestParam("nome") String nome) throws RecursoNaoEncontrado {
         return service.getByNome(nome);
     }
 

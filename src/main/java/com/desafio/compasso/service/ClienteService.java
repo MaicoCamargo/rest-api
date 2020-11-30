@@ -40,8 +40,8 @@ public class ClienteService {
      * @param nome - nome do cliente para busca
      * @return - cliente com donem
      */
-    public Cliente getByNome(String nome) {
-        return repository.findByNome(nome);
+    public List<Cliente> getByNome(String nome) {
+        return repository.findAllByNome(nome);
     }
 
     /**
@@ -79,7 +79,7 @@ public class ClienteService {
      * @param cliente - dados do novo cliente
      * @return - mensagem de sucesso ou erro no cadastro
      */
-    public Cliente cadastrar(Cliente cliente) throws RecursoNaoEncontrado {
+    public Cliente cadastrar(Cliente cliente) {
         return repository.save(cliente);
     }
 
