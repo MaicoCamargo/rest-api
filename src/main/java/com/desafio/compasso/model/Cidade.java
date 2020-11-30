@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 public class Cidade {
 
-    //todo tornar o id auto increment
     @Id @GeneratedValue
     private int id;
     private String nome;

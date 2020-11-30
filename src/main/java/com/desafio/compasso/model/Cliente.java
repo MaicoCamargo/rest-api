@@ -1,15 +1,11 @@
 package com.desafio.compasso.model;
 
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Cliente {
 
-    //todo tornar o id auto increment
     @Id @GeneratedValue
     private int id;
     private String nome;
